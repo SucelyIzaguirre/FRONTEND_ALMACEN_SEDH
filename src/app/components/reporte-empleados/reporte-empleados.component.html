@@ -1,0 +1,38 @@
+<div class="container mt-4">
+  <h2>Reporte de Permisos de Empleados</h2>
+  
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Dependencia</th>
+          <th>Empleado</th>
+          <th>Fecha Solicitud</th>
+          <th>Tipo Permiso</th>
+          <th>Hora Salida</th>
+          <th>Hora Retorno</th>
+          <th>Tiempo Permiso</th>
+          <th>Horas Disponibles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reporte of reportes" [ngClass]="reporte.empleadoClass">
+          <td *ngIf="reporte.showDep" [attr.rowspan]="reporte.rowspanDep" class="td-center">
+            {{reporte.nom_dependencia}}
+          </td>
+          <td *ngIf="reporte.showEmp" [attr.rowspan]="reporte.rowspanEmp" class="td-center">
+            {{reporte.empleado}}
+          </td>
+          <td>{{reporte.fec_solicitud | date:'dd/MM/yyyy'}}</td>
+          <td>{{reporte.nom_tipo}}</td>
+          <td>{{reporte.hor_salida}}</td>
+          <td>{{reporte.hor_retorno}}</td>
+          <td>{{reporte.hor_permiso}}</td>
+          <td *ngIf="reporte.showEmp" [attr.rowspan]="reporte.rowspanEmp" class="td-center">
+            {{reporte.hor_disponible || 'N/A'}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

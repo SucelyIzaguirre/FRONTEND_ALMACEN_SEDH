@@ -1,0 +1,78 @@
+<div class="container mt-4">
+  <h1 class="mb-4">Mis Solicitudes</h1>
+  
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Fecha Solicitud</th>
+          <th>Tipo Solicitud</th>
+          <th>Estado Solicitud</th>
+          <th>Primer Revisión</th>
+          <th>Segunda Revisión</th>
+          <th>Motivo Rechazo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="solicitudes.length === 0">
+          <td colspan="6" class="text-center">No hay solicitudes pendientes de aprobación</td>
+        </tr>
+        <tr *ngFor="let solicitud of solicitudes">
+          <td>{{solicitud.fec_solicitud | date:'dd/MM/yyyy'}}</td>
+          <td>{{solicitud.nom_tipo_solicitud}}</td>
+          <td>
+            <span [class]="'badge ' + (solicitud.nom_estado === 'EN PROCESO' ? 'bg-warning' : 
+                                    solicitud.nom_estado === 'APROBADO' ? 'bg-success' : 'bg-danger')">
+              {{solicitud.nom_estado}}
+            </span>
+          </td>
+          <td>{{solicitud.pri_aporbacion || (solicitud.mot_rechazo ? '----------------' : 'PENDIENTE')}}</td>
+          <td>{{solicitud.seg_aprobacion || (solicitud.mot_rechazo ? '----------------' : 'PENDIENTE')}}</td>
+          <td>{{solicitud.mot_rechazo || 'N/A'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="container mt-5">
+    <h1 class="mb-4">Mis Solicitudes De Emergencia</h1>
+    
+    <div class="table-responsive2">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Fecha Solicitud</th>
+            <th>Tipo Solicitud</th>
+            <th>Estado Solicitud</th>
+            <th>Primer Revisión</th>
+            <th>Segunda Revisión</th>
+            <th>Motivo Rechazo</th>
+            <th>Evidencia</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="solicitudesEmergencia.length === 0">
+            <td colspan="7" class="text-center">No hay solicitudes de emergencia pendientes de aprobación</td>
+          </tr>
+          <tr *ngFor="let solicitudE of solicitudesEmergencia">
+            <td>{{solicitudE.fec_solicitud | date:'dd/MM/yyyy'}}</td>
+            <td>{{solicitudE.nom_tipo_solicitud}}</td>
+            <td>
+              <span [class]="'badge ' + (solicitudE.nom_estado === 'EN PROCESO' ? 'bg-warning' : 
+                                      solicitudE.nom_estado === 'APROBADO' ? 'bg-success' : 'bg-danger')">
+                {{solicitudE.nom_estado}}
+              </span>
+            </td>
+            <!-- En la sección de solicitudes de emergencia -->
+            <td>{{solicitudE.pri_aporbacion || (solicitudE.mot_rechazo ? '----------------' : 'PENDIENTE')}}</td>
+            <td>{{solicitudE.seg_aprobacion || (solicitudE.mot_rechazo ? '----------------' : 'PENDIENTE')}}</td>
+            <td>{{solicitudE.mot_rechazo || 'N/A'}}</td>
+            <td>
+            </td>   
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

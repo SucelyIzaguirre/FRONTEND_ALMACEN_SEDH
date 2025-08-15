@@ -1,0 +1,144 @@
+<!-- Spinner -->
+<div *ngIf="isLoading" class="loading-container">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Cargando...</span>
+  </div>
+</div>
+
+<!-- Contenido -->
+<div class="form-container" *ngIf="!isLoading">
+  <h1>Solicitud De Permiso Personal</h1>
+  <form (ngSubmit)="submitForm()">
+    <div class="form-group">
+      <label for="nombre">Nombre del Empleado:</label>
+      <input type="text" id="nombre" [(ngModel)]="empleado.nombre" name="nombre" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+      <label for="dependencia">Dependencia:</label>
+      <input type="text" id="dependencia" [(ngModel)]="empleado.dependencia" name="dependencia" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+      <label for="cargo">Cargo:</label>
+      <input type="text" id="cargo" [(ngModel)]="empleado.cargo" name="cargo" class="form-control" readonly>
+    </div>
+
+    <div class="form-date">
+      <div>
+        <label class="fecha-label" for="fecha">Fecha de solicitud:</label>
+        <input type="date" 
+               id="fecha" 
+               [(ngModel)]="fecha" 
+               name="fecha" 
+               class="form-control" 
+               [min]="fechaMinima"
+               [class.invalido]="camposInvalidos.fecha"
+               (change)="validarFormulario()" 
+               required>
+        <span class="error-message" *ngIf="camposInvalidos.fecha">
+          Seleccione una fecha
+        </span>
+      </div>
+      <div class="tiempo-salida">
+        <label>Tiempo que desea tomar:</label>
+        <div class="d-flex align-items-center gap-2">
+          <div class="time-input">
+            <input type="number" 
+                   id="horas" 
+                   [(ngModel)]="horas" 
+                   name="horas" 
+                   class="form-control" 
+                   [class.invalido]="camposInvalidos.horas"
+                   (change)="onInputChange()" 
+                   min="0" 
+                   max="9" 
+                   required>
+            <small>Horas</small>
+          </div>
+          <div class="time-input">
+            <input type="number" 
+                   id="minutos" 
+                   [(ngModel)]="minutos" 
+                   name="minutos" 
+                   class="form-control" 
+                   [class.invalido]="camposInvalidos.minutos"
+                   (change)="onInputChange()" 
+                   min="0" 
+                   max="59" 
+                   required>
+            <small>Minutos</small>
+          </div>
+        </div>
+        <span class="error-message" *ngIf="camposInvalidos.horas">
+          Las horas deben estar entre 1 y 9
+        </span>
+        <span class="error-message" *ngIf="camposInvalidos.minutos">
+          Los minutos deben estar entre 0 y 59
+        </span>
+      </div>
+      <div class="horas-disponibles">
+        <span class="horas-disponibles-value">{{ empleado.horasDisponibles }}</span>
+        <span class="horas-disponibles-text">Horas Disponibles</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="motivo">Motivo de la salida:</label>
+      <textarea id="motivo" 
+                [(ngModel)]="motivo" 
+                name="motivo" 
+                class="form-control" 
+                [class.invalido]="camposInvalidos.motivo"
+                (input)="onInputChange()" 
+                rows="3" 
+                required></textarea>
+      <span class="error-message" *ngIf="camposInvalidos.motivo">
+        Ingrese el motivo
+      </span>
+    </div>
+    <div class="form-group">
+      <label>¿Este permiso es una cita médica?</label>
+      <div class="radio-group">
+        <input type="radio" 
+               id="cita-si" 
+               [(ngModel)]="citaMedica" 
+               name="citaMedica" 
+               [value]="1"
+               (change)="onInputChange()">
+        <label for="cita-si">Sí</label>
+        <input type="radio" 
+               id="cita-no" 
+               [(ngModel)]="citaMedica" 
+               name="citaMedica" 
+               [value]="0"
+               (change)="onInputChange()">
+        <label for="cita-no">No</label>
+      </div>
+    </div>
+    <div class="form-group" *ngIf="citaMedica === 1">
+      <label for="comprobante" class="warning">*Usted debera adjuntar la evidencia medica en este momento o en un 
+      plazo de 3 días después de la fecha de esta solicitud.
+      </label>
+      <input type="file" id="comprobante" name="comprobante" class="form-control" accept="image/*">
+    </div>
+    <div class="form-group">
+      <button type="submit" 
+          class="btn btn-primary" 
+          [disabled]="formInvalido">
+      Enviar A Jefe Inmediato
+      </button>
+    </div>
+    </form>
+  </div>
+
+<!-- Template para el Modal -->
+<ng-template #modalContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">{{ modalTitle }}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body text-center">
+    <p>{{ modalMessage }}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modal.close()">Cerrar</button>
+  </div>
+</ng-template>

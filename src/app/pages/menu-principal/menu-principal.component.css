@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding-left: 5px;
+  box-sizing: border-box;
+}
+
+
+.menu-lateral {
+  width: 200px;
+  background: linear-gradient(45deg, #296580, #040505);
+  height: 100vh;
+  float: left;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.logo-img {
+  width: 180px;
+  height: 140px;
+  margin-block: 30px;
+  display: block;
+}
+
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu {
+  color: rgb(139, 135, 135);
+  text-decoration: none;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.submenu {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.submenu a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 5px 0;
+  font-size: 0.9em;
+}
+
+.submenu a:hover {
+  color: #5FC3DB;
+  text-decoration: none;
+}
+
+.button {
+  background-color: #000000;
+  color: #6EC1E4;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin-top: 320px;
+  margin-left: 15px;
+}
+
+button:hover {
+  background-color: #6EC1E4;
+  color: #000000;
+  padding: 10px;
+}
+
+
+
+footer p {
+  color: #296580;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: calc(100% - 200px);
+  margin-left: 200px;
+  background-color: white;
+  z-index: 1;
+  opacity: 1 !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+.contenido {
+  margin-left: 200px;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.contenido::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -600px;
+  transform: translateY(-50%);
+  width: 1200px;
+  height: 1200px;
+  background-image: url('/Escudo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right ;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+@keyframes reflejo {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(30deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(30deg);
+  }
+}
+
+.menu-lateral::before {
+  content: '';
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 400%;
+  height: 400%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  transform: rotate(30deg);
+  animation: reflejo 20s linear infinite;
+}
