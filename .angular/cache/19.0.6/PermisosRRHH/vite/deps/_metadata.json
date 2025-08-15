@@ -1,0 +1,67 @@
+{
+  "hash": "419037ff",
+  "configHash": "b00c5831",
+  "lockfileHash": "30015c29",
+  "browserHash": "d9bbb653",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "45dd73d5",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "aad1cad9",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "593a876a",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "30c6337b",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "83bc45eb",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "5a4e2510",
+      "needsInterop": false
+    },
+    "@ng-bootstrap/ng-bootstrap": {
+      "src": "../../../../../../node_modules/@ng-bootstrap/ng-bootstrap/fesm2022/ng-bootstrap.mjs",
+      "file": "@ng-bootstrap_ng-bootstrap.js",
+      "fileHash": "2c5115dc",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-UFW2UG6Z": {
+      "file": "chunk-UFW2UG6Z.js"
+    },
+    "chunk-RR4WJPJC": {
+      "file": "chunk-RR4WJPJC.js"
+    },
+    "chunk-EMBPBA2Y": {
+      "file": "chunk-EMBPBA2Y.js"
+    },
+    "chunk-XSEMJSXL": {
+      "file": "chunk-XSEMJSXL.js"
+    },
+    "chunk-6MZ3VTCP": {
+      "file": "chunk-6MZ3VTCP.js"
+    }
+  }
+}

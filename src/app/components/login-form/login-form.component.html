@@ -8,7 +8,7 @@
     <form (ngSubmit)="login()" #loginForm="ngForm" class="login-form">
       <div class="form-group mb-3">
         <label for="username">Correo:</label>
-        <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" required #usernameInput="ngModel" placeholder="nombre.apellido@sedh.gob.hn">
+        <input type="email" class="form-control" id="username" [(ngModel)]="username" name="username" required #usernameInput="ngModel" placeholder="nombre.apellido@sedh.gob.hn">
         <div *ngIf="usernameInput.invalid && usernameInput.touched" class="text-danger">
           El correo es requerido
         </div>
@@ -37,7 +37,8 @@
       <div *ngIf="errorMessage" class="alert alert-danger mt-3">
         {{ errorMessage }}
       </div>
-      <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Ingresar</button>
+      <button type="submit" class="submit-btn" [disabled]="loginForm.invalid">Ingresar</button>
+      <div class="forgot-password-msg">¿Olvidaste tu contraseña?</div>
     </form>
   </div>
 </div>
